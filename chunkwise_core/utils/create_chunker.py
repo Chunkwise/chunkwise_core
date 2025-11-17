@@ -1,6 +1,5 @@
 import os
 from typing import Any
-from dotenv import load_dotenv
 from langchain_text_splitters import (
     RecursiveCharacterTextSplitter,
     TokenTextSplitter,
@@ -27,15 +26,12 @@ from ..types.chunker_config import (
     ChonkieSlumberConfig,
 )
 
-load_dotenv()
-
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-
-
 def create_chunker(
     config: ChunkerConfig,
 ) -> Any:
     """Create a chunker from a config."""
+    OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+
     if config is None:
         return None
     match config:
