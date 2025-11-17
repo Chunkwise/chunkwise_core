@@ -1,30 +1,29 @@
 # Core
 
-## To install dependencies (creates/uses poetry-managed venv)
+## About
 
-poetry install
+The core repository contains types and chunkers shared by multiple services. Types are always imported while chunkers are an optional import.
 
 ## To import to a service
 
-- Run `poetry add --editable ../core` (for production remove --editable)
-- Run `poetry install`
-- Import to your file. Ex. `from chunkwise_core import Chunk`
+Edit `pyproject.toml` under Poetry dependencies:
 
-## To test the Chonkie Semantic and Chonkie Slumber chunkers you need an OpenAI API key
+`[tool.poetry.dependencies]`
 
-- generate an OPENAI API key
+Default import (types only):
 
-- create a .env file with:
+`chunkwise-core = { git = "https://github.com/Chunkwise/chunkwise_core.git" }`
 
-  `OPENAI_API_KEY=[your_api_key]`
+Import types and chunkers:
 
-## Classes available to import
+`chunkwise-core = { git = "https://github.com/Chunkwise/chunkwise_core.git", extras = ["chunkers"] }`
 
-- types
-  - Chunk
-  - RecursiveLevel
-  - RecursiveRules
-  - BaseChunkerConfig
-  - RecursiveChunkerConfig
-  - TokenChunkerConfig
-  - GeneralChunkerConfig
+## To add to `requirements.txt` for a Docker image
+
+Default:
+
+`chunkwise-core @ git+https://github.com/Chunkwise/chunkwise_core.git`
+
+With chunkers:
+
+`chunkwise-core[chunkers] @ git+https://github.com/Chunkwise/chunkwise_core.git`
