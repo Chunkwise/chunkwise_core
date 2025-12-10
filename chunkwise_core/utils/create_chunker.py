@@ -12,7 +12,6 @@ from chonkie.chunker import (
     SemanticChunker,
     SlumberChunker,
 )
-from chonkie.embeddings import OpenAIEmbeddings
 from chonkie.genie import OpenAIGenie
 from ..types.chunker_config import (
     ChunkerConfig,
@@ -51,8 +50,6 @@ def create_chunker(
                 chunk_overlap=config.chunk_overlap,
                 encoding_name=config.encoding_name,
                 model_name=config.model_name,
-                # allowed_special=config.allowed_special,
-                # disallowed_special=config.disallowed_special,
             )
         case LangChainCharacterConfig():
             return CharacterTextSplitter(
@@ -85,11 +82,7 @@ def create_chunker(
                 include_delim=config.include_delim,
             )
         case ChonkieSemanticConfig():
-            embedding_model = config.embedding_model
-            if embedding_model is None:
-                embedding_model = OpenAIEmbeddings(api_key=OPENAI_API_KEY)
             return SemanticChunker(
-                embedding_model=embedding_model,
                 threshold=config.threshold,
                 chunk_size=config.chunk_size,
                 similarity_window=config.similarity_window,
