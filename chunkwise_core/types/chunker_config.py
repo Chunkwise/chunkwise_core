@@ -41,8 +41,6 @@ class LangChainTokenConfig(LangChainBaseConfig):
     chunker_type: Literal["token"] = "token"
     encoding_name: str = "gpt2"
     model_name: str | None = None
-    # allowed_special: Literal["all"] | list[str] = Field(default_factory=list)
-    # disallowed_special: Literal["all"] | list[str] = "all"
 
 
 class ChonkieBaseConfig(BaseModel):
