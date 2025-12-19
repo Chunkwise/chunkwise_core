@@ -1,8 +1,14 @@
-# Core
+# Chunkwise core
 
 ## About
 
-The core repository contains types and chunkers shared by multiple services. Types are always imported while chunkers are an optional import.
+This core repository contains shared types, chunkers, and utility functions used across multiple Chunkwise services.
+
+### What's Included
+
+- **Types**: Shared data types for chunks, chunker configurations, and evaluation metrics
+- **Chunkers**: Document chunker implementations
+- **Utils**: Currently contains a document normalisation function for stable chunking
 
 ## To import to a service
 
@@ -10,11 +16,11 @@ Edit `pyproject.toml` under Poetry dependencies:
 
 `[tool.poetry.dependencies]`
 
-Default import (types only):
+Default import (types and utils):
 
 `chunkwise-core = { git = "https://github.com/Chunkwise/chunkwise_core.git" }`
 
-Import types and chunkers:
+Import types, utils, and chunkers:
 
 `chunkwise-core = { git = "https://github.com/Chunkwise/chunkwise_core.git", extras = ["chunkers"] }`
 
