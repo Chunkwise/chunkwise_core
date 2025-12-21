@@ -4,7 +4,7 @@
 
 This core repository contains shared types, chunkers, and utility functions used across multiple Chunkwise services.
 
-### What's Included
+### What's included
 
 - **Types**: Shared data types for chunks, chunker configurations, and evaluation metrics
 - **Chunkers**: Document chunker implementations
